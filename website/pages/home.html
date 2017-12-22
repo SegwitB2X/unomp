@@ -55,7 +55,7 @@
                                                         <tbody>
                                                         {{ for(var pool in it.stats.pools) { }}
                                                         <tr>
-                                                                <td>{{=pool.replace(/(\b\w)/i,function(m){return m.toUpperCase();}))}}</td>
+                                                                <td>{{=pool.replace(/(\b\w)/i,function(m){return m.toUpperCase();})}}</td>
                                                                 <td>{{=it.stats.pools[pool].workerCount}}</td>
                                                                 <td>{{=it.stats.pools[pool].hashrateString}}</td>
                                                         </tr>
