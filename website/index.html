@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
+
+		<title>{{=it.portalConfig.website.siteTitle}}</title>
+		<meta name="description" content="">
+		<meta name="author" content="">
+			
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<!-- Basic Styles -->
+		<link rel="stylesheet" type="text/css" media="screen" href="/static/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="/static/css/font-awesome.min.css">
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
+
+		<!-- SmartAdmin Styles : Caution! DO NOT change the order -->
+		<link rel="stylesheet" type="text/css" media="screen" href="/static/css/smartadmin-production-plugins.min.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="/static/css/smartadmin-production.min.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="/static/css/smartadmin-skins.min.css">
+
+		<!-- SmartAdmin RTL Support  -->
+		<link rel="stylesheet" type="text/css" media="screen" href="/static/css/smartadmin-rtl.min.css">
+
+		<!-- FAVICONS -->
+		<link rel="shortcut icon" href="/static/img/favicon/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="/static/img/favicon/favicon.ico" type="image/x-icon">
+
+		<!-- GOOGLE FONT -->
+		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
+
+		<!-- Specifying a Webpage Icon for Web Clip 
+			 Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html -->
+		<link rel="apple-touch-icon" href="/static/img/splash/sptouch-icon-iphone.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="/static/img/splash/touch-icon-ipad.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="/static/img/splash/touch-icon-iphone-retina.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="/static/img/splash/touch-icon-ipad-retina.png">
+		
+		<!-- iOS web-app metas : hides Safari UI Components and Changes Status Bar Appearance -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		
+		<!-- Startup image for web apps -->
+		<link rel="apple-touch-startup-image" href="/static/img/splash/ipad-landscape.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
+		<link rel="apple-touch-startup-image" href="/static/img/splash/ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
+		<link rel="apple-touch-startup-image" href="/static/img/splash/iphone.png" media="screen and (max-device-width: 320px)">
+
+		<script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.5/d3.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+		<script src="/static/main.js"></script>
+		<script src="/static/nvd3.js"></script>
+	</head>
+	
+	<body class="">
+
+		<!-- HEADER -->
+		<header id="header">
+			<div id="logo-group">
+
+				<!-- PLACE YOUR LOGO HERE -->
+			<!--	<span id="logo"> <img src="http://altnuts.com/static/img/logo.png" style="width:20px height:20px" alt="NOMP"> </span> -->
+				<!-- END LOGO PLACEHOLDER -->
+			</div>
+
+			<div class="pull-right">
+				
+				<!-- collapse menu button -->
+				<div id="hide-menu" class="btn-header pull-right">
+					<span> <a href="javascript:void(0);" data-action="toggleMenu" title="Collapse Menu"><i class="fa fa-reorder"></i></a> </span>
+				</div>
+				<!-- end collapse menu -->
+			</div>
+			<!-- end pulled right: nav area -->
+			<a href="http://www.miningrigrentals.com/?ref=11848" target="_blank">MiningRigRentals</a><br>
+		</header>
+		<!-- END HEADER -->
+
+		<!-- Left panel : Navigation area -->
+		<!-- Note: This width of the aside area can be adjusted through LESS variables -->
+		<aside id="left-panel">
+			<nav>
+				<ul>
+                                        <li class="{{? it.selected === 'index' }}active{{?}}">
+                                                <a href="/"><i class="fa fa-home"></i> <span class="menu-item-parent">Home</span></a>
+                                        </li>
+					<li class="{{? it.selected === 'getting_started' }}active{{?}}">
+						<a href="/getting_started"><i class="fa fa-rocket"></i> <span class="menu-item-parent">Getting Started</span></a>
+					</li>
+					<li class="{{? it.selected === 'stats' }}active{{?}}">
+						<a href="/stats"><i class="fa fa-bar-chart-o"></i> <span class="menu-item-parent">Statistics</span></a>
+					</li>
+					<li class="{{? it.selected === 'workers' }}active{{?}}">
+						<a href="/workers"><i class="fa fa-cogs"></i> <span class="menu-item-parent">Workers</span></a>4
+					</li>
+					<li class="{{? it.selected === 'api' }}active{{?}}">
+						<a href="/api"><i class="fa fa-code"></i> <span class="menu-item-parent">API</span></a>
+					</li>
+				</ul>
+			</nav>
+			<span class="minifyme" data-action="minifyMenu"> 
+				<i class="fa fa-arrow-circle-left hit"></i> 
+			</span>
+
+		</aside>
+		<!-- END NAVIGATION -->
+
+		<!-- MAIN PANEL -->
+		<div id="main" role="main">
+
+			<div id="ribbon">
+				<ol class="breadcrumb">
+					<li>UNOMP BETA</li><li>{{=it.selected}}</li>
+				</ol>
+			</div>
+			<!-- END RIBBON -->
+
+			<!-- MAIN CONTENT -->
+			<div id="content">
+				{{=it.page}}
+			</div>
+			<!-- END MAIN CONTENT -->
+
+		</div>
+		<!-- END MAIN PANEL -->
+
+		<!-- PAGE FOOTER -->
+		<div class="page-footer">
+			<div class="row">
+    				<div>
+        			  <span class="txt-color-white"><i class="fa fa-heart"></i>&nbsp; Support this project by donating&nbsp;<i class="fa fa-btc icon-x2"></i>&nbsp; 19svwpxWAhD4zsfeEnnxExZgnQ46A3mrt3</span>
+    				</div>
+				<div class="col-xs-12 col-sm-6">
+                                  <span class="txt-color-white"><i class="fa fa-github"></i>&nbsp; Find me at&nbsp;<a href="https://github.com/UNOMP/unified-node-open-mining-portal" target="_blank">Unified Node Open Mining Portal</a></span>
+				</div>
+			</div>
+		</div>
+		<!-- END PAGE FOOTER -->
+
+		<!--================================================== -->
+
+		<!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)-->
+		<script data-pace-options='{ "restartOnRequestAfter": true }' src="/static/js/plugin/pace/pace.min.js"></script>
+
+		<!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script>
+			if (!window.jQuery) {
+				document.write('<script src="/static/js/libs/jquery-2.1.1.min.js"><\/script>');
+			}
+		</script>
+
+		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+		<script>
+			if (!window.jQuery.ui) {
+				document.write('<script src="/static/js/libs/jquery-ui-1.10.3.min.js"><\/script>');
+			}
+		</script>
+
+		<!-- IMPORTANT: APP CONFIG -->
+		<script src="/static/js/app.config.js"></script>
+
+		<!-- JS TOUCH : include this plugin for mobile drag / drop touch events-->
+		<script src="/static/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script> 
+
+		<!-- BOOTSTRAP JS -->
+		<script src="/static/js/bootstrap/bootstrap.min.js"></script>
+
+		<!-- JARVIS WIDGETS -->
+		<script src="/static/js/smartwidgets/jarvis.widget.min.js"></script>
+
+		<!-- JQUERY SELECT2 INPUT -->
+		<script src="/static/js/plugin/select2/select2.min.js"></script>
+
+		<!-- JQUERY UI + Bootstrap Slider -->
+		<script src="/static/js/plugin/bootstrap-slider/bootstrap-slider.min.js"></script>
+
+		<!-- browser msie issue fix -->
+		<script src="/static/js/plugin/msie-fix/jquery.mb.browser.min.js"></script>
+
+		<!-- FastClick: For mobile devices -->
+		<script src="/static/js/plugin/fastclick/fastclick.min.js"></script>
+
+		<!--[if IE 8]>
+
+		<h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
+
+		<![endif]-->
+
+		<!-- MAIN APP JS FILE -->
+		<script src="/static/js/app.min.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-48972758-2', 'auto');
+  ga('send', 'pageview');
+</script>
+	</body>
+
+</html>

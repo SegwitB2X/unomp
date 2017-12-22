@@ -1,0 +1,68 @@
+{
+    "name": "unified-node-open-mining-portal",
+    "version": "1.0.0",
+    "description": "An extremely efficient, highly scalable, all-in-one, easy to setup cryptocurrency mining pool",
+    "keywords": [
+        "stratum",
+        "mining",
+        "pool",
+        "server",
+        "poolserver",
+        "bitcoin",
+        "litecoin",
+        "scrypt",
+	"merged",
+	"multipool",
+	"multicoin"
+    ],
+    "homepage": "https://github.com/UNOMP/unified-node-open-mining-portal",
+    "bugs": {
+        "url": "https://github.com/UNOMP/unified-node-open-mining-portal/issues"
+    },
+    "license": "GPL-2.0",
+    "contributors": [
+        "vekexasia",
+        "TheSeven",
+        "ahmed",
+	"zone117x",
+	"elitemobb",
+	"altnuts",
+	"infernoman",
+	"sigwo"
+    ],
+    "main": "init.js",
+    "bin": {
+        "block-notify": "./scripts/blockNotify.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/UNOMP/unified-node-open-mining-portal.git"
+    },
+    "dependencies": {
+        "merged-pooler": "git://github.com/UNOMP/node-merged-pool",
+        "dateformat": "1.0.12",
+	"log4js": "0.6.31",
+	"bitcoin": "3.0.1",
+        "node-json-minify": "1.0.0",
+        "redis": "2.4.2",
+        "mysql": "2.10.2",
+        "async": "1.5.2",
+        "express": "4.13.4",
+        "body-parser": "1.15.0",
+        "compression": "1.6.1",
+        "dot": "1.0.3",
+        "newrelic": "1.25.4",
+        "colors": "1.1.2",
+        "node-watch": "0.3.5",
+        "request": "2.69.0",
+        "node-poloniex": "git://github.com/sigwo/poloniex.js",
+        "node-bittrex": "git://github.com/n0mad01/node.bittrex.api",
+        "node-cryptopia": "git://github.com/sigwo/node-cryptopia",
+        "nonce": "1.0.3",
+        "bignum": "0.11.0",
+        "extend": "3.0.0"
+    },
+    "engines": {
+        "node": ">=0.10"
+    }
+}

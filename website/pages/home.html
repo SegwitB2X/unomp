@@ -1,0 +1,87 @@
+<div class="row">
+	<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-0" data-widget-editbutton="false">
+			<header>
+				<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+				<h2>Global Stats</h2>
+			</header>
+			<div>
+				<div class="jarviswidget-editbox">
+				</div>
+				<div class="widget-body">
+					<div class="table-responsive">
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>Algo</th>
+									<th>Miners</th>
+									<th>Hashrate</th>
+								</tr>
+							</thead>
+							<tbody>
+							{{ for(var algo in it.stats.algos) { }}
+							<tr>
+								<td>{{=algo}}</td>
+								<td>{{=it.stats.algos[algo].workers}}</td>
+								<td>{{=it.stats.algos[algo].hashrateString}}</td>
+							</tr>
+							{{ } }}
+							</tbody>	
+						</table>		
+					</div>
+				</div>
+			</div>
+		</div>
+	</article>
+        <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-0" data-widget-editbutton="false">
+                        <header>
+                                <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                                <h2>Pools / Coins</h2>
+                        </header>
+                        <div>
+                                <div class="jarviswidget-editbox">
+                                </div>
+                                <div class="widget-body">
+                                        <div class="table-responsive">
+                                                <table class="table table-bordered">
+                                                        <thead>
+                                                                <tr>
+                                                                        <th>Coin</th>
+                                                                        <th>Miners</th>
+                                                                        <th>Hashrate</th>
+                                                                </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        {{ for(var pool in it.stats.pools) { }}
+                                                        <tr>
+                                                                <td>{{=pool}}</td>
+                                                                <td>{{=it.stats.pools[pool].workerCount}}</td>
+                                                                <td>{{=it.stats.pools[pool].hashrateString}}</td>
+                                                        </tr>
+                                                        {{ } }}
+                                                        </tbody>
+                                                </table>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+        </article>
+    </div>
+</div>
+
+<script>
+    $(function() {
+        statsSource.addEventListener('message', function (e) {
+            var stats = JSON.parse(e.data);
+            for (algo in stats.algos) {
+                $('#statsMiners' + algo).text(stats.algos[algo].workers);
+                $('#statsHashrate' + algo).text(stats.algos[algo].hashrateString);
+            }
+            for (var pool in stats.pools) {
+                $('#statsMiners' + pool).text(stats.pools[pool].workerCount);
+                $('#statsHashrate' + pool).text(stats.pools[pool].hashrateString);
+            }
+        });
+    });
+</script>

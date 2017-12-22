@@ -1,0 +1,44 @@
+<div class="row">
+        <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		{{ for(var pool in it.stats.pools) { }}
+                <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-0" data-widget-editbutton="false">
+                        <header>
+                                <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                                <h2>{{=it.stats.pools[pool].name}} Stats</h2>
+                        </header>
+                        <div>
+                                <div class="jarviswidget-editbox">
+                                </div>
+                                <div class="widget-body">
+                                        <div class="table-responsive">
+                                                <table class="table table-bordered">
+                                                        <thead>
+                                                                <tr>
+                						    <th>Address</th>
+						                    <th>Shares</th>
+        						            <th>Invalid shares</th>
+                						    <th>Efficiency</th>
+               							    <th>Hashrate</th>
+                                                                </tr>
+                                                        </thead>
+                                                        <tbody>
+								{{ for(var worker in it.stats.pools[pool].workers) { }}
+    							               {{var workerstat = it.stats.pools[pool].workers[worker];}}
+                    							<tr>
+							                        <td>{{=worker}}</td>
+                        							<td>{{=Math.floor(workerstat.shares)}}</td>
+                        							<td>{{=Math.floor(workerstat.invalidshares)}}</td>
+                        							<td>{{? workerstat.shares > 0}} {{=Math.floor(10000 * workerstat.shares / (workerstat.shares + workerstat.invalidshares)) / 100}}% {{??}} 0% {{?}}</td>
+                        							<td>{{=workerstat.hashrateString}}</td>
+                    							</tr>
+                						{{ } }}
+                                                        </tbody>
+                                                </table>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+	{{ } }}
+        </article>
+</div>
+

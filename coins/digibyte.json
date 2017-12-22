@@ -1,0 +1,6 @@
+{
+    "name": "Digibyte",
+    "symbol": "DGB",
+    "algorithm": "sha256",
+    "peermagic": "fac3b6da"
+}

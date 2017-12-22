@@ -1,0 +1,9 @@
+{
+    "name": "eMark",
+    "symbol": "DEM",
+    "algorithm": "sha256",
+    "reward": "POS",
+    "txMessages": true,
+    "peerMagic": "e4e8e9e5",
+    "peerMagicTestnet": "cdf2c0ef"
+}
