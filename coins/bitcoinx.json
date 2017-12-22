@@ -1,0 +1,6 @@
+{
+  "name": "BitcoinX",
+  "symbol": "B2X",
+  "algorithm": "x11",
+  "mposDiffMultiplier": 256
+}

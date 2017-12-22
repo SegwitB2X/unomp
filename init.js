@@ -76,6 +76,7 @@ if (cluster.isWorker){
             new PoolWorker(logger);
             break;
         case 'paymentProcessor':
+            logger.info('Run paymentProcessor!');
             new PaymentProcessor(logger);
             break;
         case 'website':
@@ -531,7 +532,8 @@ var startProfitSwitch = function(){
         setTimeout(function(){
     startPaymentProcessor();
 
-    startAuxPaymentProcessor();
+
+    // startAuxPaymentProcessor();
 
     startWebsite();
 
