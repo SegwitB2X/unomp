@@ -533,7 +533,7 @@ var startProfitSwitch = function(){
     startPaymentProcessor();
 
 
-    // startAuxPaymentProcessor();
+    startAuxPaymentProcessor();
 
     startWebsite();
 
