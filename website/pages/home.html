@@ -55,7 +55,7 @@
                                                         <tbody>
                                                         {{ for(var pool in it.stats.pools) { }}
                                                         <tr>
-                                                                <td>{{=pool}}</td>
+                                                                <td>{{=(it.stats.pools[pool].full_name ? it.stats.pools[pool].full_name : pool)}}</td>
                                                                 <td>{{=it.stats.pools[pool].workerCount}}</td>
                                                                 <td>{{=it.stats.pools[pool].hashrateString}}</td>
                                                         </tr>

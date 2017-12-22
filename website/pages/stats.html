@@ -97,7 +97,7 @@
                                                         <tbody>
                 					{{ for(var pool in it.stats.pools) { }}
 								<tr>
-									<td>{{=pool}}</td>
+									<td>{{=(it.stats.pools[pool].full_name ? it.stats.pools[pool].full_name : pool)}}</td>
 									<td>{{=it.stats.pools[pool].poolStats.validShares}}</td>
 									<td>{{=it.stats.pools[pool].poolStats.invalidShares}} ({{=it.stats.pools[pool].poolStats.invalidRate}}%)</td>
 									<td>{{=it.stats.pools[pool].poolStats.validBlocks}}</td>
@@ -131,7 +131,7 @@
                                                         <tbody>
                                                         {{ for(var pool in it.stats.pools) { }}
                                                                 <tr>
-                                                                        <td>{{=pool}}</td>
+                                                                        <td>{{=(it.stats.pools[pool].full_name ? it.stats.pools[pool].full_name : pool)}}</td>
                                                                         <td>{{=it.stats.pools[pool].blocks.pending}}</td>
                                                                         <td>{{=it.stats.pools[pool].blocks.confirmed}}</td>
                                                                         <td>{{=it.stats.pools[pool].blocks.orphaned}}</td>
@@ -171,7 +171,7 @@
                                                         <tbody>
                                                         {{ for(var pool in it.stats.pools) { }}
                                                                 <tr>
-									<td>{{=it.stats.pools[pool].name}}</td>
+									<td>{{=(it.stats.pools[pool].full_name ? it.stats.pools[pool].full_name : it.stats.pools[pool].name)}}</td>
 							                <td>{{=it.stats.pools[pool].algorithm}}</td>
                 							<td>{{=Object.keys(it.stats.pools[pool].workers).length}}</td>
                 							<td>{{=it.stats.pools[pool].poolStats.validShares}}</td>

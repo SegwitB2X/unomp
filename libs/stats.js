@@ -278,6 +278,7 @@ this.getCoins = function(cback){
                         var coinName = client.coins[i / commandsPerCoin | 0];
                         var coinStats = {
                             name: coinName,
+                            full_name: poolConfigs[coinName].coin.full_name,
                             symbol: poolConfigs[coinName].coin.symbol.toUpperCase(),
                             algorithm: poolConfigs[coinName].coin.algorithm,
                             hashrates: replies[i + 1],
