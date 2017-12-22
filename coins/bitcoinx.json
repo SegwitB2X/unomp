@@ -1,5 +1,5 @@
 {
-  "name": "BitcoinX",
+  "name": "Segwit2x testnet",
   "symbol": "B2X",
   "algorithm": "x11",
   "mposDiffMultiplier": 256
