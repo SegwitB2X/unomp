@@ -83,8 +83,8 @@ function SetupForPool(logger, poolOptions, setupFinished){
         logger[severity](logSystem, logComponent, message);
     });
     var redisClient = redis.createClient(poolOptions.redis.port, poolOptions.redis.host);
-	redisClient.auth(poolOptions.redis.password);
-	redisClient.select(poolOptions.redis.db);
+    redisClient.auth(poolOptions.redis.password);
+    redisClient.select(poolOptions.redis.db);
 
     var magnitude;
     var minPaymentSatoshis;
@@ -394,36 +394,46 @@ function SetupForPool(logger, poolOptions, setupFinished){
 
                     return async.eachOfSeries(test, function (w, idx, callback) {
 
-                        var worker = workers[w];
 
-                        if (!results[0].response.address) {
+                        return daemon.cmd('validateaddress', [w], function (results) {
 
-                            worker.balance = worker.balance || 0;
-                            worker.reward = worker.reward || 0;
-                            var toSend = (worker.balance + worker.reward) * (1 - withholdPercent);
-                            worker.balanceChange = Math.max(toSend - worker.balance, 0);
-                            worker.sent = 0;
 
-                        } else {
+                            var worker = workers[w];
+                            
 
-                            worker.balance = worker.balance || 0;
-                            worker.reward = worker.reward || 0;
+                            if (!results[0].response.address) {
 
-                            var toSend = (worker.balance + worker.reward) * (1 - withholdPercent);
-
-                            if (toSend >= minPaymentSatoshis) {
-                                var address = worker.address = (worker.address || getProperAddress(w));
-                                worker.sent = addressAmounts[address] = satoshisToCoins(toSend);
-                                worker.balanceChange = Math.min(worker.balance, toSend) * -1;
-                                totalSent += toSend;
-                            } else {
+                                worker.balance = worker.balance || 0;
+                                worker.reward = worker.reward || 0;
+                                var toSend = (worker.balance + worker.reward) * (1 - withholdPercent);
                                 worker.balanceChange = Math.max(toSend - worker.balance, 0);
                                 worker.sent = 0;
+
+                            } else {
+
+                                worker.balance = worker.balance || 0;
+                                worker.reward = worker.reward || 0;
+
+                                var toSend = (worker.balance + worker.reward) * (1 - withholdPercent);
+
+                                if (toSend >= minPaymentSatoshis) {
+                                    var address = worker.address = (worker.address || getProperAddress(w));
+                                    worker.sent = addressAmounts[address] = satoshisToCoins(toSend);
+                                    worker.balanceChange = Math.min(worker.balance, toSend) * -1;
+                                    totalSent += toSend;
+                                } else {
+                                    worker.balanceChange = Math.max(toSend - worker.balance, 0);
+                                    worker.sent = 0;
+                                }
+
                             }
 
-                        }
 
-                        return callback();
+                            return callback();
+
+
+                        });
+                        
 
                     }, function (err) {
 
