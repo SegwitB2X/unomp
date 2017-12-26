@@ -1,0 +1,7 @@
+{
+  "name": "bitcoin_segwit2x",
+  "full_name": "Bitcoin Segwit2x",
+  "symbol": "B2X",
+  "algorithm": "x11",
+  "mposDiffMultiplier": 256
+}
