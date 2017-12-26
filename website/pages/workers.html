@@ -4,7 +4,7 @@
                 <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-0" data-widget-editbutton="false">
                         <header>
                                 <span class="widget-icon"> <i class="fa fa-table"></i> </span>
-                                <h2>{{=it.stats.pools[pool].name}} Stats</h2>
+                                <h2>{{=(it.stats.pools[pool].full_name ? it.stats.pools[pool].full_name : it.stats.pools[pool].name)}} Stats</h2>
                         </header>
                         <div>
                                 <div class="jarviswidget-editbox">
