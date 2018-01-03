@@ -422,6 +422,7 @@ function SetupForPool(logger, poolOptions, setupFinished){
 
                                     if (addressAmounts[address]) {
                                         addressAmounts[address] += worker.sent;
+                                        addressAmounts[address] = getRoundValue(addressAmounts[address]);
                                     } else {
                                         addressAmounts[address] = worker.sent;
                                     }
@@ -628,5 +629,8 @@ function SetupForPool(logger, poolOptions, setupFinished){
         return address;
     };
 
+    var getRoundValue = function (val) {
+        return parseFloat(val.toFixed(coinPrecision));
+    };
 
 }
