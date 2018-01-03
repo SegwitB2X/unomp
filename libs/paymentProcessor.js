@@ -5,6 +5,7 @@ var async = require('async');
 
 var Stratum = require('../merged-pooler/lib/index.js');
 var util = require('../merged-pooler/lib/util.js');
+var _ = require('lodash');
 
 
 module.exports = function(logger){
