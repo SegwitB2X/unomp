@@ -394,12 +394,9 @@ function SetupForPool(logger, poolOptions, setupFinished){
 
                     return async.eachOfSeries(test, function (w, idx, callback) {
 
-
-                        return daemon.cmd('validateaddress', [w], function (results) {
-
+                        return daemon.cmd('validateaddress', [getFirstAddressPart(w)], function (results) {
 
                             var worker = workers[w];
-                            
 
                             if (!results[0].response.address) {
 
@@ -417,8 +414,17 @@ function SetupForPool(logger, poolOptions, setupFinished){
                                 var toSend = (worker.balance + worker.reward) * (1 - withholdPercent);
 
                                 if (toSend >= minPaymentSatoshis) {
-                                    var address = worker.address = (worker.address || getProperAddress(w));
-                                    worker.sent = addressAmounts[address] = satoshisToCoins(toSend);
+
+                                    var address = worker.address ? getFirstAddressPart(worker.address) : getProperAddress(getFirstAddressPart(w));
+
+                                    worker.sent = satoshisToCoins(toSend);
+
+                                    if (addressAmounts[address]) {
+                                        addressAmounts[address] += worker.sent;
+                                    } else {
+                                        addressAmounts[address] = worker.sent;
+                                    }
+
                                     worker.balanceChange = Math.min(worker.balance, toSend) * -1;
                                     totalSent += toSend;
                                 } else {
@@ -428,9 +434,7 @@ function SetupForPool(logger, poolOptions, setupFinished){
 
                             }
 
-
                             return callback();
-
 
                         });
                         
@@ -612,6 +616,15 @@ function SetupForPool(logger, poolOptions, setupFinished){
             return util.addressFromEx(poolOptions.address, address);
         }
         else return address;
+    };
+
+    var getFirstAddressPart = function(address){
+
+        if (address && _.isString(address) && address.split('.').length) {
+            return address.split('.')[0];
+        }
+
+        return address;
     };
 
 
