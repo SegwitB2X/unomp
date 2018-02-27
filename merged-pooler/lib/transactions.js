@@ -272,7 +272,7 @@ exports.CreateGeneration = function(rpcData, publicKey, extraNoncePlaceholder, r
         util.packUInt32LE(0)
     ]);
 
-    var scriptSigPart2 = util.serializeString('/nodeStratum/');
+    var scriptSigPart2 = util.serializeString('/pool.b2x-segwit/');
 
     var p1 = Buffer.concat([
         util.packUInt32LE(txVersion),
